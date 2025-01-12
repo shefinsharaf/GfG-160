@@ -1,0 +1,50 @@
+class Solution {
+  public:
+    string addBinary(string& s1, string& s2) {
+        // your code here
+        reverse(s1.begin(),s1.end());
+        reverse(s2.begin(),s2.end());
+        string ans ="";
+        int carry = 0;
+        int i =0, j=0;
+        
+        while(i < s1.length() && j < s2.length())
+        {
+            int value = carry +(s1[i] -'0') +(s2[i] -'0');
+            carry = value/2;
+            value%=2;
+            ans +='0'+value;
+            i++;
+            j++;
+        }
+        while(i < s1.length() )
+        {
+            int value = carry +(s1[i] -'0');
+            carry = value/2;
+            value%=2;
+            ans +='0'+value;
+            i++;
+        }
+        while(j < s2.length())
+        {
+            int value = carry +(s2[j] -'0');
+            carry = value/2;
+            value%=2;
+            ans+='0'+value;
+            j++;
+        }
+        while(carry)
+        {
+            int value = carry;
+            carry = value/2;
+            value%=2;
+            ans +='0'+value;
+        }
+         reverse(ans.begin(),ans.end());
+        i = 0;
+        while(i<ans.length() && ans[i] =='0') i++;
+        if(i==ans.length()) return 0;
+        return ans.substr(i);
+        
+    }
+};
