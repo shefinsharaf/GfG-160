@@ -12,3 +12,31 @@ public:
         return -1;
     }
 };
+// using moores voiting algorithm 
+these contains two variables element and count the we simply take the first number as element and check if the next elemnt is same then increment the count
+else decrement.if count becomes zero wee update the elemnent with the next number 
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int count = 0;
+        int ele;
+        int n = nums.size();
+        for(int i = 0;i<n;i++)
+            {
+                if(count == 0){
+                    count = 1;
+                    ele = nums[i];
+                }
+                else if(nums[i] == ele)
+                    count++;
+                    else count--;
+            }
+                int cnt = 0;
+            for(int i = 0;i<n;i++)
+                {
+                    if(nums[i] == ele) cnt++;
+                }
+                if(cnt > n/2) return ele;
+                return -1;
+    }
+};
