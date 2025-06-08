@@ -1,0 +1,48 @@
+Brute force approach
+
+class Solution {
+public:
+        const int marker = INT_MIN + 5;
+      void markrow(vector<vector<int>>& matrix, int i){
+            for(int j = 0 ; j< matrix[0].size();j++)
+            {
+               if (matrix[i][j] != 0 && matrix[i][j] != marker )
+                matrix[i][j] = marker;
+            }
+        }
+      void markcolm(vector<vector<int>> &matrix,int j){
+            for(int i = 0 ; i< matrix.size();i++)
+            {
+               if (matrix[i][j] != 0 && matrix[i][j] != marker )
+                 matrix[i][j] = marker;
+            }
+        }
+    void setZeroes(vector<vector<int>>& matrix) {
+        int rows = matrix.size();
+        int colm = matrix[0].size();
+
+
+        for(int i = 0 ;i< rows;i++)
+        {
+            for(int j = 0;j<colm ; j++)
+            {
+                if(matrix[i][j] == 0 )
+                {
+                    markrow(matrix,i);
+                    markcolm(matrix,j);
+                }
+            }
+        }
+
+        for(int i = 0 ;i< rows;i++)
+        {
+            for(int j = 0;j<colm ; j++)
+            {
+                if(matrix[i][j] == marker)
+                {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+};
