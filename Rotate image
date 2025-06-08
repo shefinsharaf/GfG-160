@@ -1,0 +1,18 @@
+Brute force approach using an extra result matrix and store the rotated matrix
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        int k = n -1;
+        vector<vector <int>> result; 
+        for(int i = 0;i<m;i++)
+        {
+            for(int j = 0;j<n;j++)
+            {
+                 result[j][k] = matrix[i][j] ;
+                k--;
+            }
+        }
+    }
+};
